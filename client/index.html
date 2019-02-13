@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -30,34 +30,66 @@
         
         <div class="wrapper" >
             <div id="sidebar" style="border: 2px solid rgba(63, 81, 181, 0.1)" class="z-depth-4 scroll">
-                <div class="row d-flex justify-content-center">
+                <div class="row d-flex justify-content-center align-self-center">
                     <div class="col-12">
                         <br>
                     </div>
+                    <i class="far fa-user-circle fa-8x"></i>
+                    
+
+                    <div class="col-12">
+                        <hr>
+                    </div>
                     <ul>
-                        <ul >
-                            <li >
-                                <h6 class="waves-effect d-flex"  style="cursor:pointer;border-radius:15px">
-                                    <i class="fas fa-desktop ali align-self-start col-3 justify-content-start" ></i>         
-                                    <span class="sv-normal col-9">View Site</span>
-                                </h6>
-                            </li>
-                            <hr>
-                            <li >
-                                <h6 class="waves-effect d-flex" onclick="showArticles()" style="cursor:pointer;border-radius:15px">
-                                    <i class="far fa-file-alt align-self-start col-3 justify-content-start"></i>
-                                    <span class="sv-normal col-9">Articles</span>
-                                </h6>
-                            </li>
-                            <hr>
-                            <li >
-                                <h6 class="waves-effect d-flex" onclick="addArticle()" style="cursor:pointer;border-radius:15px">
-                                    <i class="fas fa-pen align-self-start col-3 justify-content-starts"></i>                                    
-                                    <span class="sv-normal col-9">Write New Article</span>
-                                </h6>
-                            </li>
-                            <hr>
-                        </ul>
+                        <li >
+                            <h6 class="btn btn-white waves-effect waves-teal d-flex"  style="cursor:pointer;border-radius:15px">
+                                <i class="fas fa-desktop ali fa-2x align-self-start col-3 justify-content-start" ></i>         
+                                <span class="sv-normal col-9">View Site</span>
+                            </h6>
+                        </li>
+                        <hr>
+                        <li >
+                            <h6 class="btn btn-white waves-effect waves-teal d-flex" onclick="showArticles()" style="cursor:pointer;border-radius:15px">
+                                <i class="far fa-file-alt fa-2x align-self-start col-3 justify-content-start"></i>
+                                <span class="sv-normal col-9">Articles</span>
+                            </h6>
+                        </li>
+                        <hr>
+                        <li >
+                            <h6 class="btn btn-white waves-effect waves-teal d-flex" onclick="addArticle()" style="cursor:pointer;border-radius:15px">
+                                <i class="fas fa-pen fa-2x align-self-start col-3 justify-content-starts"></i>                                    
+                                <span class="sv-normal col-9">Write New Article</span>
+                            </h6>
+                        </li>
+                        <hr>
+                        <li >
+                            <h6 class="btn btn-white waves-effect waves-teal d-flex"  style="cursor:pointer;border-radius:15px">
+                                <i class="far fa-image fa-2x align-self-start col-3 justify-content-start" ></i>         
+                                <span class="sv-normal col-9">Media</span>
+                            </h6>
+                        </li>
+                        <hr>
+                        <li >
+                            <h6 class="btn btn-white waves-effect waves-teal d-flex"  style="cursor:pointer;border-radius:15px">
+                                <i class="fas fa-users fa-2x align-self-start col-3 justify-content-start" ></i>         
+                                <span class="sv-normal col-9">People</span>
+                            </h6>
+                        </li>
+                        <hr>
+                        <li >
+                            <h6 class="btn btn-white waves-effect waves-teal d-flex"  style="cursor:pointer;border-radius:15px">
+                                <i class="fas fa-share-alt fa-2x align-self-start col-3 justify-content-start" ></i>         
+                                <span class="sv-normal col-9">Sharing</span>
+                            </h6>
+                        </li>
+                        <hr>
+                        <li >
+                            <h6 class="btn btn-white waves-effect waves-teal d-flex"  style="cursor:pointer;border-radius:15px">
+                                <i class="fas fa-cog fa-2x align-self-start col-3 justify-content-start" ></i>         
+                                <span class="sv-normal col-9">Account Settings</span>
+                            </h6>
+                        </li>
+                        <hr>
                     </ul>  
                 </div>
             </div>
@@ -75,18 +107,31 @@
 
                         <hr>
                         <div v-for="index in filterArticle">
-                            <div class="card text-center align-self-center blue-gradient z-depth-2" style="height:95%;border-radius: 15px;color:white">
-
+                            <div class="card text-center align-self-center z-depth-2" style="height:95%;border-radius: 15px;color:black">
+                                <div class="card-header blue-gradient" style="color:white">
+                                    <h5 class="card-title"><strong>{{index.title}}</strong></h5>
+                                </div>
                                 <div  class="card-body" >
-                                    <h6 class="card-title">{{index.title}}</h6>
-                                    <h7>{{index.content}}</h7>
-                                    <i class="far fa-edit right" style="cursor:pointer" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></i>
-                                    <i v-on:click.prevent="deleteArticle(index._id)" class="far fa-trash-alt" style="cursor:pointer;" style=""></i>
+                                    <div v-html="index.content">{{index.content}}</div>
+                                    <i class="far fa-edit right" style="cursor:pointer" data-toggle="collapse" :data-target="'#collapseExample' + index._id" aria-expanded="false" aria-controls="'collapseExample' + index._id"></i>
+                                    <i v-on:click.prevent="deleteArticle(index._id)" class="far fa-trash-alt" style="cursor:pointer;"></i>
                                 </div>
 
-                                <div class="collapse" id="collapseExample">
+                                <div class="collapse" :id="'collapseExample' + index._id">
                                     <div class="card card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                        <form v-on:submit.prevent="updateArticle(index._id,index.title,index.content)">
+                                            <div class="md-form ">
+                                                    <input v-model="index.title" type="text" class="form-control z-depth-1" name="title" style="border-radius: 10px;"  >
+                                                </div>
+                                                <div class="z-depth-1" style="border-radius: 15px;" >
+                                                    <wysiwyg v-model="index.content" />
+                                                </div>
+                                                <div class="text-center">
+                                                <hr>
+                                                <button type="submit" class="btn blue-gradient z-depth-1a" style="border-radius: 15px;">Update Article</button>
+                                            </div>
+                                        </form>
+                                            
                                     </div>
                                 </div>
                                                                 
@@ -99,7 +144,7 @@
 
                 <div id="addArticle" class="card text-center align-self-center" style="height:95%;width: 80%;">
                     <div class="card-header  blue-gradient z-depth-4 z-depth-2"   >
-                        Add an Article 
+                        New Article 
                     </div>
                     <div  class="card-body z-depth-2" style="color:black; background-color: white">
                         <form v-on:submit.prevent="addArticle">
@@ -117,8 +162,17 @@
                         </form>
 
                     </div>
+                </div>   
+                
+                <div id="viewSite" class="col-12">
+                    <!-- <hr>
+                    <div class="card">
+                        <hr>
+                        <nav class="purple-gradient">
+
+                        </div>
+                    </div> -->
                 </div>
-                                                
             </div>
         </div>         
 
@@ -164,10 +218,11 @@
                         title: "",
                         text: '',
                         search: "",
-                        articles: []
+                        articles: [],
+                        
                     };
                 }, 
-                beforeCreate:  function() {
+                created:  function() {
                     axios
                         .get('http://localhost:3000/articles')
                         .then(({data}) => {
@@ -201,7 +256,7 @@
                                 swal(response.data.status, "", "success")
                             })
                             .catch((err) => {
-                                console.log(err)
+                                console.log(err.message)
                             })
                     },
                     deleteArticle: function(id) {
@@ -216,7 +271,22 @@
                             .catch((err) => {
                                 console.log(err)
                             })
-                    }
+                    },
+                    updateArticle: function(id, title, content) {
+                        this.title = title
+                        this.text = content
+                        axios
+                            .put(`http://localhost:3000/articles/${id}`, {title: this.title, content: this.text})
+                            .then((response) => {
+                                swal(response.data.status, "", "success")
+                                showArticles()
+                                this.title = ""
+                                this.content = ""
+                            })
+                            .catch((err) => {
+                                console.log(err)
+                            })
+                    },
                     
                 }
 
@@ -226,5 +296,8 @@
         </script>
 
     </body>
+    <footer class="blue-gradient" style="width: 100%">
+        <div class="footer-copyright text-center py-3"><strong>© 2019 Copyright:Mini-WordPress.com</strong></div>
+    </footer>
 
 </html>
