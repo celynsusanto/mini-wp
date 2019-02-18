@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const ObjectId = mongoose.ObjectId
 
 const ArticleSchema = new Schema({
     title: {
@@ -10,7 +11,13 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
-    created_at: Date
+    author: {type: ObjectId, ref: "User"},
+    featured_image: String,
+    tags:[String],
+    created_at: {
+        type: Date,
+        default: Date.now
+    }
 })
 
 const Article = mongoose.model('Article', ArticleSchema)

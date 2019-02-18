@@ -24,7 +24,7 @@ html,body,.container {
     max-width: 300px;
     min-height: 100vh;
     transition: all 0.3s;
-    background-color: rgba(255, 255, 255, 0.7)
+        
 }
 
 #sidebar.active {
@@ -32,7 +32,7 @@ html,body,.container {
 }
 
 .hover-nav:hover:before{
-    color: white;
+    color: rgba(233, 30, 99, 0.3)
 }
 
 .scroll {
@@ -44,6 +44,12 @@ li {list-style-type: none;}
 .waves-effect.waves-teal .waves-ripple {
     background-color: #a7ffeb
 }
+
+.header-sidebar {
+    background: linear-gradient(to left, #BFE6BA, #D3959B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
 
 /* #nav-user {
     overflow: hidden;
