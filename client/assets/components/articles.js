@@ -158,9 +158,9 @@ Vue.component('all-articles', {
                 <span class="input-group-text blue-gradient " id="basic-text1" style="cursor: pointer"><i class="fas fa-search" aria-hidden="true"></i></span>
             </div>
             </form>
-            <div v-for="index in filterArticle" class="row">
-                <div class="card text-center align-self-center z-depth-2 col-md-4" style="height:95%;border-radius: 15px;color:black">
-                    <div class="card-header " style="color:white; background:linear-gradient(to left, #BFE6BA, #D3959B);">
+            <div v-for="index in filterArticle">
+                <div class="card text-center align-self-center z-depth-2" style="height:95%;border-radius: 15px;color:black">
+                    <div class="card-header" style="color:white; background:linear-gradient(to left, #BFE6BA, #D3959B);">
                         <h5 class="card-title"><strong>{{index.title}}</strong></h5>
                     </div>
                     <div  class="card-body" >

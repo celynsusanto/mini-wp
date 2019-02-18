@@ -1,5 +1,5 @@
 // const link = 'http://localhost:3000'
-const link = 'http://writywrite-server.celyn-portfolio.world'
+const link = 'http://35.240.223.24'
 
 const app = new Vue({
     el: '#app',

@@ -40,7 +40,7 @@ Vue.component('login-user', {
             console.log('===', id_token)
 
             axios
-                .post('http://localhost:3000/users/authentication/google', {token: id_token})
+                .post(`${link}/users/authentication/google`, {token: id_token})
                 .then(({data}) => {
                     localStorage.setItem('token', `${data.token}`)
                     this.status =""
